@@ -3,6 +3,8 @@
 
 A cheat table for __Persona Q2__, a game developed by Atlus, for use while playing on Citra.
 
+![preview.png](img/preview.png)
+
 __WARNING:__ Generally untested, use at your own discretion, don't blame me for borked saves, etc.
 
 __NOTE:__ The table is mostly dynamically generated, due to some limitations opening certain group records for the first time can take a while.
