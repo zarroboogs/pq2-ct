@@ -49,7 +49,8 @@ The maximum meter level is 5 and each level is composed of 100 ticks, so 500 tic
 
 ### User Input Strings
 
-__Names__ and other user input strings in the game are encoded using SHIFT-JIS and are all `\0` terminated.
+__Names__ and other user input strings in the game are encoded in SHIFT-JIS (each character is 2 bytes) and are all `\0` terminated.
+However, ASCII (where each character is 1 byte)  is a subset of SHIFT-JIS, and is fully supported by the game.
 
 To edit a string, e.g. the __P4 Hero__ name, use the following process:
 

@@ -12,6 +12,14 @@ $ct.SelectNodes("//CheatEntries[not(@*) and not(*)]") | % {
     [void]$_.ParentNode.RemoveChild($_)
 }
 
+$ct.SelectNodes("//Color[text()='000000']") | % {
+    [void]$_.ParentNode.RemoveChild($_)
+}
+
+$ct.SelectNodes("//*[starts-with(local-name(),'ShowAs') and text()='0']") | % {
+    [void]$_.ParentNode.RemoveChild($_)
+}
+
 $i = 0
 $ct.SelectNodes("//ID") | % {
     $_.'#text' = [string]$i++

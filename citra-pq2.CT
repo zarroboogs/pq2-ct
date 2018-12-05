@@ -6,7 +6,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>0</ID>
-      <Description>"[ENABLE] mingw"</Description>
+      <Description>"[ENABLE] Persona Q2 | Citra | mingw"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -67,8 +67,7 @@ resetRec = {}
     </CheatEntry>
     <CheatEntry>
       <ID>1</ID>
-      <Description>"[TOOL] PQ2 Compendium Unlocker"</Description>
-      <Color>000000</Color>
+      <Description>"[TOOL] Compendium Unlocker"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -76,11 +75,7 @@ resetRec = {}
 if syntaxcheck then return end
 
 local form = frmComp
-
-if form.Tag == 1 then
-  form.Show()
-  return
-end
+if not reset(memrec) then form.Show() return end
 
 local COMP_BASE = getAddress("_ptrComp")
 local SIZE_OF_PERSONA = 0x30
@@ -89,7 +84,7 @@ local function isUnlocked(id)
   return readBytes(COMP_BASE + id * SIZE_OF_PERSONA + 0x00, 1) or 0
 end
 
-function writeComp(flags, id, level, exp, skills, hp, sp)
+local function writeComp(flags, id, level, exp, skills, hp, sp)
   local offset = COMP_BASE + id * SIZE_OF_PERSONA
 
   writeSmallInteger(offset + 0x00, flags)
@@ -108,14 +103,14 @@ function writeComp(flags, id, level, exp, skills, hp, sp)
   writeInteger(offset + 0x18, hpsp)
 end
 
-function lock(id)
+local function lock(id)
   local flags, level, exp, hp, sp = 0, 0, 0, 0, 0
   local skills = {0,0,0,0,0,0}
 
   writeComp(flags, id, level, exp, skills, hp, sp)
 end
 
-function unlock(id)
+local function unlock(id)
   local p = table.filter(tab.comp, fById(id))[1]
   local flags, id, level, exp = 1, p.id, p.base_level, p.exp
   local skills = { p.s1, p.s2, p.s3, p.s4, p.s5, p.s6 }
@@ -170,7 +165,7 @@ local function frmCompShow(sender)
   end
 end
 
-function btnLockAllClick(sender)
+local function btnLockAllClick(sender)
   for i = 0, form.lvComp.Items.Count - 1 do
     local item = form.lvComp.Items[i]
     lock(item.SubItems[0])
@@ -178,7 +173,7 @@ function btnLockAllClick(sender)
   end
 end
 
-function btnUnlockAllClick(sender)
+local function btnUnlockAllClick(sender)
   for i = 0, form.lvComp.Items.Count - 1 do
     local item = form.lvComp.Items[i]
     if isUnlocked(item.SubItems[0]) == 0 then
@@ -189,7 +184,6 @@ function btnUnlockAllClick(sender)
 end
 
 init()
-form.Tag = 1
 form.OnShow = frmCompShow
 form.Show()
 
@@ -266,7 +260,7 @@ frmComp.Hide()
               <CheatEntries>
                 <CheatEntry>
                   <ID>11</ID>
-                  <Description>"pq2Char"</Description>
+                  <Description>"dsChar"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
@@ -281,7 +275,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+4</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -290,7 +283,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>1</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+4</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -305,14 +297,14 @@ frmComp.Hide()
                       <Description>"Armor"</Description>
                       <DropDownListLink>lstItem</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+8+18</Address>
+                      <Address>+20</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>17</ID>
                       <Description>"Accessory"</Description>
                       <DropDownListLink>lstItem</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+8+18*2</Address>
+                      <Address>+38</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>18</ID>
@@ -322,9 +314,8 @@ frmComp.Hide()
                       <CheatEntries>
                         <CheatEntry>
                           <ID>19</ID>
-                          <Description>"FILL,1,pq2Persona,flat"</Description>
-                          <DropDownListLink>lstItem</DropDownListLink>
-                          <VariableType>2 Bytes</VariableType>
+                          <Description>"FILL,1,dsPersona,flat"</Description>
+                          <VariableType>4 Bytes</VariableType>
                           <Address>+68</Address>
                         </CheatEntry>
                       </CheatEntries>
@@ -352,7 +343,7 @@ frmComp.Hide()
                 </CheatEntry>
                 <CheatEntry>
                   <ID>23</ID>
-                  <Description>"pq2Persona"</Description>
+                  <Description>"dsPersona"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
@@ -367,7 +358,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -376,7 +366,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>7</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+1</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -386,7 +375,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>9</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+2</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -395,7 +383,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>1</BitStart>
                       <BitLength>7</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+3</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -452,7 +439,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>12</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+18</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -461,7 +447,6 @@ frmComp.Hide()
                       <VariableType>Binary</VariableType>
                       <BitStart>4</BitStart>
                       <BitLength>12</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+19</Address>
                     </CheatEntry>
                     <CheatEntry>
@@ -498,7 +483,7 @@ frmComp.Hide()
                 </CheatEntry>
                 <CheatEntry>
                   <ID>43</ID>
-                  <Description>"pq2SkillEntry"</Description>
+                  <Description>"dsSkillEntry"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
@@ -537,140 +522,140 @@ frmComp.Hide()
                       <ID>49</ID>
                       <Description>"Skill #2 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+c+2</Address>
+                      <Address>+e</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>50</ID>
                       <Description>"Skill #2 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+d+2</Address>
+                      <Address>+f</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>51</ID>
                       <Description>"Skill #2 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+e+2</Address>
+                      <Address>+10</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>52</ID>
                       <Description>"Skill #3 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+10+4</Address>
+                      <Address>+14</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>53</ID>
                       <Description>"Skill #3 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+11+4</Address>
+                      <Address>+15</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>54</ID>
                       <Description>"Skill #3 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+12+4</Address>
+                      <Address>+16</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>55</ID>
                       <Description>"Skill #4 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+14+6</Address>
+                      <Address>+1a</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>56</ID>
                       <Description>"Skill #4 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+15+6</Address>
+                      <Address>+1b</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>57</ID>
                       <Description>"Skill #4 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+16+6</Address>
+                      <Address>+1c</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>58</ID>
                       <Description>"Skill #5 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+18+8</Address>
+                      <Address>+20</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>59</ID>
                       <Description>"Skill #5 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+19+8</Address>
+                      <Address>+21</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>60</ID>
                       <Description>"Skill #5 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+1a+8</Address>
+                      <Address>+22</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>61</ID>
                       <Description>"Skill #6 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+1c+a</Address>
+                      <Address>+26</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>62</ID>
                       <Description>"Skill #6 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+1d+a</Address>
+                      <Address>+27</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>63</ID>
                       <Description>"Skill #6 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+1e+a</Address>
+                      <Address>+28</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>64</ID>
                       <Description>"Skill #7 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+20+c</Address>
+                      <Address>+2c</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>65</ID>
                       <Description>"Skill #7 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+21+c</Address>
+                      <Address>+2d</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>66</ID>
                       <Description>"Skill #7 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+22+c</Address>
+                      <Address>+2e</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>67</ID>
                       <Description>"Skill #8 - Level Delta"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+24+e</Address>
+                      <Address>+32</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>68</ID>
                       <Description>"Skill #8 - Enabled"</Description>
                       <VariableType>Byte</VariableType>
-                      <Address>+25+e</Address>
+                      <Address>+33</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>69</ID>
                       <Description>"Skill #8 - ID"</Description>
                       <DropDownListLink>lstSkill</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+26+e</Address>
+                      <Address>+34</Address>
                     </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
                   <ID>70</ID>
-                  <Description>"pq2StatsEntry"</Description>
+                  <Description>"dsStatsEntry"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
@@ -747,106 +732,110 @@ frmComp.Hide()
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>Array of byte</VariableType>
                       <ByteLength>4</ByteLength>
-                      <Address>+42+2</Address>
+                      <Address>+44</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>83</ID>
                       <Description>"???"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>Array of byte</VariableType>
-                      <ByteLength>4</ByteLength>
-                      <Address>+47+1</Address>
+                      <ByteLength>2</ByteLength>
+                      <Address>+48</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>84</ID>
+                      <Description>"Extract Skill"</Description>
+                      <DropDownListLink>lstSkill</DropDownListLink>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>+4a</Address>
                     </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>84</ID>
-                  <Description>"pq2SPStats"</Description>
+                  <ID>85</ID>
+                  <Description>"dsSPStats"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
                     <CheatEntry>
-                      <ID>85</ID>
+                      <ID>86</ID>
                       <Description>"SIZE,FC"</Description>
                       <GroupHeader>1</GroupHeader>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>86</ID>
+                      <ID>87</ID>
                       <Description>"bIsNew"</Description>
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
-                      <Address>+0</Address>
-                    </CheatEntry>
-                    <CheatEntry>
-                      <ID>87</ID>
-                      <Description>"bIsLocked"</Description>
-                      <VariableType>Binary</VariableType>
-                      <BitStart>1</BitStart>
-                      <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>88</ID>
-                      <Description>"bShowHeroName"</Description>
+                      <Description>"bIsLocked"</Description>
                       <VariableType>Binary</VariableType>
-                      <BitStart>2</BitStart>
+                      <BitStart>1</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
                       <ID>89</ID>
+                      <Description>"bShowHeroName"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>2</BitStart>
+                      <BitLength>1</BitLength>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>90</ID>
                       <Description>"Play Time H"</Description>
                       <VariableType>2 Bytes</VariableType>
                       <Address>+2</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>90</ID>
+                      <ID>91</ID>
                       <Description>"Play Time M"</Description>
                       <VariableType>2 Bytes</VariableType>
                       <Address>+4</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>91</ID>
+                      <ID>92</ID>
                       <Description>"MAX Level"</Description>
                       <VariableType>Byte</VariableType>
                       <Address>+6</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>92</ID>
+                      <ID>93</ID>
                       <Description>"Personas Registered %"</Description>
                       <VariableType>Byte</VariableType>
                       <Address>+7</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>93</ID>
+                      <ID>94</ID>
                       <Description>"Enemies Defeated"</Description>
                       <VariableType>4 Bytes</VariableType>
                       <Address>+8</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>94</ID>
+                      <ID>95</ID>
                       <Description>"Steps Taken"</Description>
                       <VariableType>4 Bytes</VariableType>
                       <Address>+c</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>95</ID>
+                      <ID>96</ID>
                       <Description>"Money Obtained"</Description>
                       <VariableType>4 Bytes</VariableType>
                       <Address>+10</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>96</ID>
+                      <ID>97</ID>
                       <Description>"Books Received"</Description>
                       <VariableType>4 Bytes</VariableType>
                       <Address>+14</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>97</ID>
+                      <ID>98</ID>
                       <Description>"Street Pass Name"</Description>
                       <VariableType>String</VariableType>
                       <Length>21</Length>
@@ -856,7 +845,7 @@ frmComp.Hide()
                       <Address>+18</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>98</ID>
+                      <ID>99</ID>
                       <Description>"Street Pass Message"</Description>
                       <VariableType>String</VariableType>
                       <Length>33</Length>
@@ -866,7 +855,7 @@ frmComp.Hide()
                       <Address>+2d</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>99</ID>
+                      <ID>100</ID>
                       <Description>"P3 Hero Name"</Description>
                       <VariableType>String</VariableType>
                       <Length>17</Length>
@@ -876,7 +865,7 @@ frmComp.Hide()
                       <Address>+4e</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>100</ID>
+                      <ID>101</ID>
                       <Description>"P4 Hero Name"</Description>
                       <VariableType>String</VariableType>
                       <Length>17</Length>
@@ -886,7 +875,7 @@ frmComp.Hide()
                       <Address>+5f</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>101</ID>
+                      <ID>102</ID>
                       <Description>"P5 Hero Name"</Description>
                       <VariableType>String</VariableType>
                       <Length>17</Length>
@@ -896,7 +885,7 @@ frmComp.Hide()
                       <Address>+70</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>102</ID>
+                      <ID>103</ID>
                       <Description>"P3P Hero Name"</Description>
                       <VariableType>String</VariableType>
                       <Length>17</Length>
@@ -906,28 +895,28 @@ frmComp.Hide()
                       <Address>+81</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>103</ID>
+                      <ID>104</ID>
                       <Description>"Character Stats"</Description>
                       <Options moHideChildren="1" moManualExpandCollapse="1" />
                       <GroupHeader>1</GroupHeader>
                       <CheatEntries>
                         <CheatEntry>
-                          <ID>104</ID>
-                          <Description>"FILL,29,pq2SPCharStats,,Char"</Description>
+                          <ID>105</ID>
+                          <Description>"FILL,29,dsSPCharStats,,Char"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>+92</Address>
                         </CheatEntry>
                       </CheatEntries>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>105</ID>
+                      <ID>106</ID>
                       <Description>"Attached Persona"</Description>
                       <Options moHideChildren="1" moManualExpandCollapse="1" />
                       <GroupHeader>1</GroupHeader>
                       <CheatEntries>
                         <CheatEntry>
-                          <ID>106</ID>
-                          <Description>"FILL,1,pq2Persona,flat"</Description>
+                          <ID>107</ID>
+                          <Description>"FILL,1,dsPersona,flat"</Description>
                           <VariableType>4 Bytes</VariableType>
                           <Address>+cc</Address>
                         </CheatEntry>
@@ -936,49 +925,46 @@ frmComp.Hide()
                   </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>107</ID>
-                  <Description>"pq2SPCharStats"</Description>
+                  <ID>108</ID>
+                  <Description>"dsSPCharStats"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
                     <CheatEntry>
-                      <ID>108</ID>
+                      <ID>109</ID>
                       <Description>"SIZE,2"</Description>
                       <GroupHeader>1</GroupHeader>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>109</ID>
+                      <ID>110</ID>
                       <Description>"bIsNavigator"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>Binary</VariableType>
                       <BitStart>5</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>110</ID>
+                      <ID>111</ID>
                       <Description>"bInParty"</Description>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>Binary</VariableType>
                       <BitStart>6</BitStart>
                       <BitLength>1</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>111</ID>
+                      <ID>112</ID>
                       <Description>"Char ID"</Description>
                       <DropDownListLink>lstChar</DropDownListLink>
                       <ShowAsHex>1</ShowAsHex>
                       <VariableType>Binary</VariableType>
                       <BitStart>0</BitStart>
                       <BitLength>5</BitLength>
-                      <ShowAsBinary>0</ShowAsBinary>
                       <Address>+0</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>112</ID>
+                      <ID>113</ID>
                       <Description>"Level"</Description>
                       <VariableType>Byte</VariableType>
                       <Address>+1</Address>
@@ -986,46 +972,46 @@ frmComp.Hide()
                   </CheatEntries>
                 </CheatEntry>
                 <CheatEntry>
-                  <ID>113</ID>
-                  <Description>"pq2BattleStatsConcise"</Description>
+                  <ID>114</ID>
+                  <Description>"dsBattleStatsConcise"</Description>
                   <Options moHideChildren="1" moManualExpandCollapse="1" />
                   <GroupHeader>1</GroupHeader>
                   <CheatEntries>
                     <CheatEntry>
-                      <ID>114</ID>
+                      <ID>115</ID>
                       <Description>"SIZE,0"</Description>
                       <GroupHeader>1</GroupHeader>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>115</ID>
+                      <ID>116</ID>
                       <Description>"Combatant ID"</Description>
                       <DropDownListLink>lstChar</DropDownListLink>
                       <VariableType>2 Bytes</VariableType>
-                      <Address>+22+8</Address>
+                      <Address>+2a</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>116</ID>
+                      <ID>117</ID>
                       <Description>"HP +Item Curr"</Description>
                       <Color>0080FF</Color>
                       <VariableType>2 Bytes</VariableType>
                       <Address>+210</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>117</ID>
+                      <ID>118</ID>
                       <Description>"SP +Item Curr"</Description>
                       <Color>C08000</Color>
                       <VariableType>2 Bytes</VariableType>
                       <Address>+214</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>118</ID>
+                      <ID>119</ID>
                       <Description>"HP+ Curr"</Description>
                       <Color>0080FF</Color>
                       <VariableType>2 Bytes</VariableType>
                       <Address>+218</Address>
                     </CheatEntry>
                     <CheatEntry>
-                      <ID>119</ID>
+                      <ID>120</ID>
                       <Description>"SP+ Curr"</Description>
                       <Color>C08000</Color>
                       <VariableType>2 Bytes</VariableType>
@@ -1038,13 +1024,13 @@ frmComp.Hide()
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>120</ID>
+          <ID>121</ID>
           <Description>"Scripts"</Description>
           <Options moHideChildren="1" moManualExpandCollapse="1" />
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
-              <ID>121</ID>
+              <ID>122</ID>
               <Description>"Generate Flag Records"</Description>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
@@ -1060,12 +1046,13 @@ local function genFlags(data, addr, desc)
 
   for _, v in pairs(data) do
     local r0 = mrNew()
+    r0.appendToEntry(gh)
+
     r0.Description = v.effect
     r0.Type = vtBinary
     r0.Binary.Startbit = v.bit - 1
     r0.Binary.Size = 1
     r0.Address = addr
-    r0.appendToEntry(gh)
   end
 end
 
@@ -1113,73 +1100,63 @@ genFlags(tsvToTable([[bit,effect
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>122</ID>
-      <Description>"PQ2 General Stats"</Description>
+      <ID>123</ID>
+      <Description>"General Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>123</ID>
-          <Description>"Passive Effect Steps"</Description>
-          <Color>000000</Color>
-          <VariableType>Byte</VariableType>
-          <Address>[[_base]+8*61b]+f30-8-2b8-4</Address>
-        </CheatEntry>
-        <CheatEntry>
           <ID>124</ID>
-          <Description>"Passive Effect"</Description>
-          <DropDownListLink>lstSkill</DropDownListLink>
-          <Color>000000</Color>
-          <VariableType>2 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f30-4-2b8</Address>
+          <Description>"Passive Effect Steps"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>[[_base]+8*61b]+c6c</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>125</ID>
-          <Description>"Enemies Defeated"</Description>
-          <Color>000000</Color>
-          <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f30-8</Address>
+          <Description>"Passive Effect"</Description>
+          <DropDownListLink>lstSkill</DropDownListLink>
+          <VariableType>2 Bytes</VariableType>
+          <Address>[[_base]+8*61b]+c74</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>126</ID>
-          <Description>"Step Counter"</Description>
-          <Color>000000</Color>
+          <Description>"Enemies Defeated"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f30-4</Address>
+          <Address>[[_base]+8*61b]+f28</Address>
         </CheatEntry>
         <CheatEntry>
           <ID>127</ID>
+          <Description>"Step Counter"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>[[_base]+8*61b]+f2c</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>128</ID>
           <Description>"Total Money Earned"</Description>
-          <Color>000000</Color>
           <VariableType>4 Bytes</VariableType>
           <Address>[[_base]+8*61b]+f30</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>128</ID>
+          <ID>129</ID>
           <Description>"Play Time [30*60*(60*h+m)]"</Description>
-          <Color>000000</Color>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*622]+dec-4</Address>
+          <Address>[[_base]+8*622]+de8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>129</ID>
+          <ID>130</ID>
           <Description>"Money"</Description>
-          <Color>000000</Color>
           <VariableType>4 Bytes</VariableType>
           <Address>[[_base]+8*622]+dec</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>130</ID>
+          <ID>131</ID>
           <Description>"Party Gauge"</Description>
-          <Color>000000</Color>
           <VariableType>4 Bytes</VariableType>
           <Address>[[_base]+8*622]+df4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>131</ID>
+          <ID>132</ID>
           <Description>"P3 Hero LName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1188,9 +1165,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+df8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>132</ID>
+          <ID>133</ID>
           <Description>"P3 Hero FName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1199,9 +1175,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e00</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>133</ID>
+          <ID>134</ID>
           <Description>"P4 Hero LName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1210,9 +1185,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e08</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>134</ID>
+          <ID>135</ID>
           <Description>"P4 Hero FName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1221,9 +1195,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e10</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>135</ID>
+          <ID>136</ID>
           <Description>"P3P Hero LName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1232,9 +1205,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e18</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>136</ID>
+          <ID>137</ID>
           <Description>"P3P Hero FName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1243,9 +1215,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e20</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>137</ID>
+          <ID>138</ID>
           <Description>"P5 Hero LName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1254,9 +1225,8 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e28</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>138</ID>
+          <ID>139</ID>
           <Description>"P5 Hero FName"</Description>
-          <Color>000000</Color>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
@@ -1265,26 +1235,23 @@ genFlags(tsvToTable([[bit,effect
           <Address>[[_base]+8*622]+e30</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>139</ID>
+          <ID>140</ID>
           <Description>"StreetPass Books #"</Description>
-          <Color>000000</Color>
           <VariableType>Byte</VariableType>
           <Address>[[_base]+8*64b]+1d4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>140</ID>
+          <ID>141</ID>
           <Description>"StreetPass Books - Locked #"</Description>
-          <Color>000000</Color>
           <VariableType>Byte</VariableType>
-          <Address>[[_base]+8*64b]+1d4+1</Address>
+          <Address>[[_base]+8*64b]+1d5</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>141</ID>
-      <Description>"PQ2 Materials Sold"</Description>
+      <ID>142</ID>
+      <Description>"Materials Sold"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1321,10 +1288,9 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>142</ID>
-      <Description>"PQ2 Compendium"</Description>
+      <ID>143</ID>
+      <Description>"Compendium"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1338,7 +1304,7 @@ local arc = tab.arcana
 local com = table.filter(tab.comp, fHasTag("val|dlc"))
 local a2d = {}
 
-local tmp, tmpSize = popDS(mrDesc("pq2Persona"), "+_ptrComp")
+local tmp, tmpSize = popDS(mrDesc("dsPersona"), "+_ptrComp")
 
 for _, prs in spairs(com, oByArcanaLevel) do
   local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, prs.id))
@@ -1362,10 +1328,9 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>143</ID>
-      <Description>"PQ2 Enepedia"</Description>
+      <ID>144</ID>
+      <Description>"Enepedia"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1395,10 +1360,9 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>144</ID>
-      <Description>"PQ2 Sub Persona Stats"</Description>
+      <ID>145</ID>
+      <Description>"Sub Persona Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1408,7 +1372,7 @@ if syntaxcheck then return end
 local rec = memrec
 if not reset(rec) then return end
 
-local tmp, tmpSize = popDS(mrDesc("pq2Persona"), "+_ptrSubPersona")
+local tmp, tmpSize = popDS(mrDesc("dsPersona"), "+_ptrSubPersona")
 
 for i = rec.Count, 15 do
   local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, i))
@@ -1430,10 +1394,9 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>145</ID>
-      <Description>"PQ2 Character Stats"</Description>
+      <ID>146</ID>
+      <Description>"Character Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1444,14 +1407,14 @@ local rec = memrec
 if not reset(rec) then return end
 
 local t = table.filter(tab.char, fNotHasTag("bln"))
-local tmp, tmpSize = popDS(mrDesc("pq2Char"), "+_ptrChar")
+local tmp, tmpSize = popDS(mrDesc("dsChar"), "+_ptrChar")
 
 for _, v in pairs(t) do
-  local r = mrClone(tmp, string.format("+%s*%x", tmpSize, v.id))
-  r.appendToEntry(rec)
-  r.DontSave = true
+  local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, v.id))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
 
-  r.Description = v.name
+  r0.Description = v.name
 end
 
 tmp.destroy()
@@ -1466,26 +1429,25 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>146</ID>
-      <Description>"PQ2 Item Inventory"</Description>
+      <ID>147</ID>
+      <Description>"Item Inventory"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>147</ID>
+          <ID>148</ID>
           <Description>"Inventory Item #"</Description>
           <VariableType>4 Bytes</VariableType>
           <Address>_ptrInv+3c8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>148</ID>
+          <ID>149</ID>
           <Description>"Inventory Free #"</Description>
           <VariableType>4 Bytes</VariableType>
           <Address>_ptrInv+3d4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>149</ID>
+          <ID>150</ID>
           <Description>"Items"</Description>
           <Options moHideChildren="1" moManualExpandCollapse="1" />
           <VariableType>Auto Assembler Script</VariableType>
@@ -1494,17 +1456,18 @@ tmp.destroy()
 
 if syntaxcheck then return end
 
-local isValid = 0x081ACDDC
-local mr1 = mrDesc("dsInvItem")
 local rec = memrec
 reset(rec)
 
-for i = rec.Count, 59 do
-  local r = mrClone(mr1, string.format("+_ptrInvItem+18*%x", i))
-  r.appendToEntry(rec)
-  r.DontSave = true
+local isValid = 0x081ACDDC
+local mr0 = mrDesc("dsInvItem")
 
-  r.Description = string.format("Item #%d ID", i + 1)
+for i = rec.Count, 59 do
+  local r0 = mrClone(mr0, string.format("+_ptrInvItem+18*%x", i))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Description = string.format("Item #%d ID", i + 1)
 end
 
 ---
@@ -1528,7 +1491,7 @@ local function timerTick(timer)
 end
 
 local invTimer = createTimer(getMainForm(), false)
-invTimer.Interval = 1000
+invTimer.Interval = 500
 invTimer.OnTimer = timerTick
 invTimer.Enabled = true
 
@@ -1544,10 +1507,9 @@ invTimer.Enabled = true
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>150</ID>
-      <Description>"PQ2 Item Store"</Description>
+      <ID>151</ID>
+      <Description>"Item Store"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1557,20 +1519,20 @@ if syntaxcheck then return end
 local rec = memrec
 if not reset(rec) then return end
 
-local mr1, mr2 = mrDesc("dsStoreItemId"), mrDesc("dsStoreItemCount")
+local mr0, mr1 = mrDesc("dsStoreItemId"), mrDesc("dsStoreItemCount")
 
 for i = rec.Count, 98 do
-  local r1 = mrClone(mr1, string.format("+_ptrStore+1A*%x", i))
+  local r0 = mrClone(mr0, string.format("+_ptrStore+1A*%x", i))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Description = string.format("Item #%d ID", i + 1)
+
+  local r1 = mrClone(mr1, string.format("+_ptrStore+1A*%x+18", i))
   r1.appendToEntry(rec)
   r1.DontSave = true
 
-  r1.Description = string.format("Item #%d ID", i + 1)
-
-  local r2 = mrClone(mr2, string.format("+_ptrStore+1A*%x+18", i))
-  r2.appendToEntry(rec)
-  r2.DontSave = true
-
-  r2.Description = string.format("Item #%d Quantity", i + 1)
+  r1.Description = string.format("Item #%d Quantity", i + 1)
 end
 
 {$asm}
@@ -1583,10 +1545,9 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>151</ID>
-      <Description>"PQ2 StreetPass Books"</Description>
+      <ID>152</ID>
+      <Description>"StreetPass Books"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1594,25 +1555,27 @@ end
 if syntaxcheck then return end
 
 local rec = memrec
-reset(rec, true)
+reset(rec)
 
 if rec.Count == 0 then
-  local book = popDS(mrDesc("pq2SPStats"), "+[[_base]+8*625]+940")
-  book.Description = "Own Book"
-  book.appendToEntry(rec)
-  book.DontSave = true
+  local r0 = popDS(mrDesc("dsSPStats"), "+[[_base]+8*625]+940")
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Description = "Own Book"
 end
 
 local max = readInteger("+[[_base]+8*64b]+1d4") + 1
 
 if rec.Count ~= max then
-  local tmp, tmpSize = popDS(mrDesc("pq2SPStats"), "+_ptrSPBooks")
+  local tmp, tmpSize = popDS(mrDesc("dsSPStats"), "+_ptrSPBooks")
 
   for i = rec.Count - 1, max - 2 do
-    local r = mrClone(tmp, string.format("+%s*%x", tmpSize, i))
-    r.appendToEntry(rec)
-    r.Description = string.format("StreetPass Book #%d", i + 1)
-    r.DontSave = true
+    local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, i))
+    r0.appendToEntry(rec)
+    r0.DontSave = true
+
+    r0.Description = string.format("StreetPass Book #%d", i + 1)
   end
 
   tmp.destroy()
@@ -1632,8 +1595,76 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>152</ID>
-      <Description>"PQ2 Battle Stats - Party"</Description>
+      <ID>153</ID>
+      <Description>"Stats Table"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" />
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+local tmp, tmpSize = popDS(mrDesc("dsStatsEntry"), "+_ptrStatsTable")
+
+for _, p in pairs(tab.comp) do
+  local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, p.id))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Description = string.format("%03d. %s [%s]", p.id, p.name, p.tag)
+end
+
+tmp.destroy()
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>154</ID>
+      <Description>"Skill Table"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" />
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+local tmp, tmpSize = popDS(mrDesc("dsSkillEntry"), "+_ptrSkillTable")
+
+for _, p in pairs(tab.comp) do
+  local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, p.id))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Description = string.format("%03d. %s [%s]", p.id, p.name, p.tag)
+end
+
+tmp.destroy()
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>155</ID>
+      <Description>"Battle Stats - Party"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <Color>008000</Color>
       <VariableType>Auto Assembler Script</VariableType>
@@ -1669,7 +1700,7 @@ end
 local rec = memrec
 reset(rec, true)
 
-local tmp = popDS(mrDesc("pq2BattleStatsConcise"), nil, true)
+local tmp = popDS(mrDesc("dsBattleStatsConcise"), nil, true)
 
 for i = rec.Count, sym - 1 do
   local id = readSmallInteger("+2a+_party" .. i)
@@ -1682,11 +1713,11 @@ for i = rec.Count, sym - 1 do
   end
 
   if id then
-    local r = mrClone(tmp, "+_party" .. i, true)
-    r.appendToEntry(rec)
-    r.Description = table.filter(tab.char, fById(tostring(id)))[1].name
-    r.DontSave = true
-    r.Color = c
+    local r0 = mrClone(tmp, "+_party" .. i, true)
+    r0.appendToEntry(rec)
+    r0.DontSave = true
+    r0.Description = table.filter(tab.char, fById(tostring(id)))[1].name
+    r0.Color = c
   end
 end
 
@@ -1702,8 +1733,8 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>153</ID>
-      <Description>"PQ2 Battle Stats - Enemies"</Description>
+      <ID>156</ID>
+      <Description>"Battle Stats - Enemies"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <Color>008000</Color>
       <VariableType>Auto Assembler Script</VariableType>
@@ -1739,7 +1770,7 @@ end
 local rec = memrec
 reset(rec, true)
 
-local tmp = popDS(mrDesc("pq2BattleStatsConcise"), nil, true)
+local tmp = popDS(mrDesc("dsBattleStatsConcise"), nil, true)
 
 for i = rec.Count, sym - 1 do
   local id = readSmallInteger("+2a+_enemy" .. i)
@@ -1752,87 +1783,17 @@ for i = rec.Count, sym - 1 do
   end
 
   if id then
-    local r = mrClone(tmp, "+_enemy" .. i, true)
-    r.appendToEntry(rec)
-    r.Description = table.filter(tab.enemy, fById(tostring(id)))[1].name
-    r.DontSave = true
-    r.Color = c
+    local r0 = mrClone(tmp, "+_enemy" .. i, true)
+    r0.appendToEntry(rec)
+    r0.DontSave = true
+    r0.Description = table.filter(tab.enemy, fById(tostring(id)))[1].name
+    r0.Color = c
   end
 end
 
 tmp.destroy()
 
 addDDLRef(memrec, false, "lstEnemy", mrByDesc("^Combatant ID"))
-
-{$asm}
-
-[DISABLE]
-{$lua}
-
-{$asm}
-
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>154</ID>
-      <Description>"PQ2 Stats Table"</Description>
-      <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-{$lua}
-
-if syntaxcheck then return end
-
-local rec = memrec
-if not reset(rec) then return end
-
-local tmp, tmpSize = popDS(mrDesc("pq2StatsEntry"), "+_ptrStatsTable")
-
-for _, p in pairs(tab.comp) do
-  local r = mrClone(tmp, string.format("+%s*%x", tmpSize, p.id))
-  r.appendToEntry(rec)
-  r.DontSave = true
-
-  r.Description = string.format("%03d. %s [%s]", p.id, p.name, p.tag)
-end
-
-tmp.destroy()
-
-{$asm}
-
-[DISABLE]
-{$lua}
-
-{$asm}
-
-</AssemblerScript>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>155</ID>
-      <Description>"PQ2 Skill Table"</Description>
-      <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <Color>000000</Color>
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
-{$lua}
-
-if syntaxcheck then return end
-
-local rec = memrec
-if not reset(rec) then return end
-
-local tmp, tmpSize = popDS(mrDesc("pq2SkillEntry"), "+_ptrSkillTable")
-
-for _, p in pairs(tab.comp) do
-  local r = mrClone(tmp, string.format("+%s*%x", tmpSize, p.id))
-  r.appendToEntry(rec)
-  r.DontSave = true
-
-  r.Description = string.format("%03d. %s [%s]", p.id, p.name, p.tag)
-end
-
-tmp.destroy()
 
 {$asm}
 
@@ -2231,11 +2192,12 @@ local list = {
 local listRec = mrDesc("Lists")
 while listRec.Count &gt; 0 do listRec[0].delete() end
 for _, v in pairs(list) do
-  local r = mrNew()
-  r.Description = v.d
-  r.DontSave = true
-  r.appendToEntry(listRec)
-  setDDL(r, false, ddlFromTable(table.filter(v.t, v.f), fmtIdNameTag), {false, false, true})
+  local r0 = mrNew()
+  r0.appendToEntry(listRec)
+  r0.DontSave = true
+
+  r0.Description = v.d
+  setDDL(r0, false, ddlFromTable(table.filter(v.t, v.f), fmtIdNameTag), {false, false, true})
 end
 
 </LuaScript>
