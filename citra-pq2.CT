@@ -6,7 +6,7 @@
   <CheatEntries>
     <CheatEntry>
       <ID>0</ID>
-      <Description>"[ENABLE] Persona Q2 | Citra | mingw"</Description>
+      <Description>"[ENABLE] Persona Q2 | citra | mingw"</Description>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -1750,8 +1750,8 @@ if ptr2 then
 
       local a = readInteger(string.format("%s+8+4*%x", ptr2, i)) &amp; 0x0fffffff
       local b = getAddress("[_basex]") -- [rdx]
-      unregisterSymbol("_partyx" .. sym)
-      registerSymbol("_partyx" .. sym, b + a, true)
+      unregisterSymbol("_enemyx" .. sym)
+      registerSymbol("_enemyx" .. sym, b + a, true)
 
       sym = sym + 1
     end
@@ -1819,7 +1819,7 @@ end
 -- MemoryRecord Stuff --
 ------------------------
 
---- returns a memory record by description.
+--- returns a memory record by description
 function mrDesc(desc)
   return getAddressList().getMemoryRecordByDescription(desc)
 end
