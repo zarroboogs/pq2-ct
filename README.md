@@ -3,7 +3,7 @@
 
 A cheat table for __Persona Q2__, a game developed by Atlus, for use while playing on Citra.
 
-![preview.png](img/preview.png)
+![preview2.png](img/preview2.png)
 
 __WARNING:__ Generally untested, use at your own discretion, don't blame me for borked saves, etc.
 
@@ -13,7 +13,8 @@ __NOTE:__ The table is mostly dynamically generated, due to some limitations ope
 
 * Latest Cheat Engine release.
 * Latest Citra release - This table only works with _mingw_ Citra builds, and was only tested under the _nightly_ releases.
-* Persona Q2 - This table has been tested with the Japanese version, `CTR-AQ2J`, together with update `1.1`.
+* Persona Q2 - This table has been tested with:
+  * `CTR-U-AQ2J`, update `1.2`, all DLC
 
 ## Installation
 

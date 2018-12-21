@@ -7,6 +7,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"[ENABLE] Persona Q2 | citra | mingw"</Description>
+      <Color>0000FF</Color>
       <VariableType>Auto Assembler Script</VariableType>
       <AssemblerScript>[ENABLE]
 {$lua}
@@ -26,24 +27,38 @@ results.destroy()
 
 local ptr = readInteger(addr .. "+3")
 local off = getAddress(string.format("%s+7-citra-qt.exe+%x", addr, ptr))
+
 if not off then return end
-updateSymbol("_base", string.format("[[citra-qt.exe+%x]]+18", off), true)
 
-updateSymbol("_ptrBattleMainProc", "[[_base]+8*585]+bdc",    true)
-updateSymbol("_ptrNames",          "[[_base]+8*60b]+9b4",    true)
-updateSymbol("_ptrSoldItems",      "[[_base]+8*61c]+168",    true)
-updateSymbol("_ptrComp",           "[[_base]+8*61d]+dbc",    true)
-updateSymbol("_ptrEnepedia",       "[[_base]+8*622]+8bc",    true)
-updateSymbol("_ptrSubPersona",     "[[_base]+8*622]+e38",    true)
-updateSymbol("_ptrChar",           "[[_base]+8*623]+318",    true)
-updateSymbol("_ptrInvItem",        "[[_base]+8*624]+694",    true)
-updateSymbol("_ptrStore",          "[[_base]+8*624]+f04",    true)
-updateSymbol("_ptrSPBooks",        "[[_base]+8*644]+f64",    true)
-updateSymbol("_ptrInv",            "[[_base]+8*81AC]+A1C",   true)
-updateSymbol("_ptrStatsTable",     "[[_base]+8*315C4]+780",  true)
-updateSymbol("_ptrSkillTable",     "[[_base]+8*31601]+b00",  true)
+updateSymbol("_base",  string.format("[[citra-qt.exe+%x]]+18", off), true)
+updateSymbol("_basex", string.format("[[citra-qt.exe+%x]]",    off), true)
 
-updateSymbol("_basex", string.format("[[citra-qt.exe+%x]]", off), true)
+updateSymbol("_ptrBattleMainProc", "[[_base]+8*585]+bdc",      true)
+updateSymbol("_ptrKeyItem",        "[[_base]+8*61b]+590",      true)
+updateSymbol("_ptrTicketStatus",   "[[_base]+8*61b]+9d0",      true)
+updateSymbol("_ptrTicketTaken",    "[[_base]+8*61b]+a34",      true)
+updateSymbol("_ptrTicketCancel",   "[[_base]+8*61b]+a4c+1",    true)
+updateSymbol("_ptrGen0",           "[[_base]+8*61b]+c74",      true)
+updateSymbol("_ptrGen1",           "[[_base]+8*61b]+eb0",      true)
+updateSymbol("_ptrGen2",           "[[_base]+8*61b]+f30",      true)
+updateSymbol("_ptrSoldItems",      "[[_base]+8*61c]+170",      true)
+updateSymbol("_ptrComp",           "[[_base]+8*61d]+dc4",      true)
+updateSymbol("_ptrEnepedia",       "[[_base]+8*622]+8c4",      true)
+updateSymbol("_ptrGen3",           "[[_base]+8*622]+df0",      true)
+updateSymbol("_ptrSubPersona",     "[[_base]+8*622]+e40",      true)
+updateSymbol("_ptrChar",           "[[_base]+8*623]+320",      true)
+updateSymbol("_ptrInvItem",        "[[_base]+8*624]+69c",      true)
+updateSymbol("_ptrStore",          "[[_base]+8*624]+f0c",      true)
+updateSymbol("_ptrSPBooksOwn",     "[[_base]+8*625]+948",      true)
+updateSymbol("_ptrSPBooks",        "[[_base]+8*644]+f6c",      true)
+updateSymbol("_ptrSPBooksCount",   "[[_base]+8*64b]+1dc",      true)
+updateSymbol("_ptrInv",            "[[_base]+8*81AC]+a54",     true)
+updateSymbol("_ptrStatsTable",     "[[_base]+8*315C5]+400+80", true)
+updateSymbol("_ptrSkillTable",     "[[_base]+8*31602]+780+80", true)
+
+if readInteger("_ptrInv-C") ~= 0x3c then
+  updateSymbol("_ptrInv", "[[_base]+8*8632]+674", true)
+end
 
 resetRec = {}
 
@@ -1016,18 +1031,55 @@ frmComp.Hide()
                     </CheatEntry>
                   </CheatEntries>
                 </CheatEntry>
+                <CheatEntry>
+                  <ID>121</ID>
+                  <Description>"dsTicketStatus"</Description>
+                  <Options moHideChildren="1" moManualExpandCollapse="1" />
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>122</ID>
+                      <Description>"SIZE,1"</Description>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>123</ID>
+                      <Description>"bIsUnlocked"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>0</BitStart>
+                      <BitLength>1</BitLength>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>124</ID>
+                      <Description>"bIsNotified"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>1</BitStart>
+                      <BitLength>1</BitLength>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>125</ID>
+                      <Description>"bIsCompleted"</Description>
+                      <VariableType>Binary</VariableType>
+                      <BitStart>2</BitStart>
+                      <BitLength>1</BitLength>
+                      <Address>+0</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
               </CheatEntries>
             </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
-          <ID>121</ID>
+          <ID>126</ID>
           <Description>"Scripts"</Description>
           <Options moHideChildren="1" moManualExpandCollapse="1" />
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
-              <ID>122</ID>
+              <ID>127</ID>
               <Description>"Generate Flag Records"</Description>
               <VariableType>Auto Assembler Script</VariableType>
               <AssemblerScript>[ENABLE]
@@ -1097,156 +1149,313 @@ genFlags(tsvToTable([[bit,effect
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>123</ID>
+      <ID>128</ID>
+      <Description>"Key Items"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" />
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+local addr = getAddress("_ptrKeyItem")
+local istart, iend = 1536, 1792
+
+local items = table.filter(tab.item, function(v, k, t)
+    return tonumber(v.id) &gt;= istart and tonumber(v.id) &lt; iend
+  end)
+
+for k, v in pairs(items) do
+  local r0 = mrNew()
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Address = h(addr + (k - 1) // 8)
+  r0.Type = vtBinary
+  r0.Binary.Startbit = (k - 1) % 8
+  r0.Binary.Size = 1
+  r0.Description = string.format("%04d. %s [%s]", v.id, v.name, v.tag)
+end
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>129</ID>
+      <Description>"Tickets"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" />
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>130</ID>
+          <Description>"Ticket Status"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" />
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+local tmp, tmpSize = popDS(mrDesc("dsTicketStatus"), "_ptrTicketStatus")
+
+for _, v in pairs(tab.ticket) do
+  local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, v.id // 2))
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  if v.id % 2 ~= 0 then
+    for _, r1 in pairs(mrGetChildren(r0)) do
+      r1.Binary.Startbit = 4 + r1.Binary.Startbit
+    end
+  end
+
+  r0.Description = string.format("%03d. %s [%03s]", v.id, v.name, v.tag)
+end
+
+tmp.destroy()
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>131</ID>
+          <Description>"Ticket - Has Been Taken Before"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" />
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+for _, v in pairs(tab.ticket) do
+  local r0 = mrNew()
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Address = h(getAddress("_ptrTicketTaken") + (4 + v.id) // 8)
+  r0.Type = vtBinary
+  r0.Binary.Startbit = (4 + v.id % 8) % 8
+  r0.Binary.Size = 1
+  r0.Description = string.format("%03d. %s [%03s]", v.id, v.name, v.tag)
+end
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>132</ID>
+          <Description>"Ticket - Has Been Cancelled Before"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" />
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+
+if syntaxcheck then return end
+
+local rec = memrec
+if not reset(rec) then return end
+
+for _, v in pairs(tab.ticket) do
+  local r0 = mrNew()
+  r0.appendToEntry(rec)
+  r0.DontSave = true
+
+  r0.Address = h(getAddress("_ptrTicketCancel") + (5 + v.id) // 8)
+  r0.Type = vtBinary
+  r0.Binary.Startbit = (5 + v.id % 8) % 8
+  r0.Binary.Size = 1
+  r0.Description = string.format("%03d. %s [%03s]", v.id, v.name, v.tag)
+end
+
+{$asm}
+
+[DISABLE]
+{$lua}
+
+{$asm}
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>133</ID>
       <Description>"General Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>124</ID>
+          <ID>134</ID>
           <Description>"Passive Effect Steps"</Description>
           <VariableType>Byte</VariableType>
-          <Address>[[_base]+8*61b]+c6c</Address>
+          <Address>_ptrGen0+0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>125</ID>
+          <ID>135</ID>
           <Description>"Passive Effect"</Description>
           <DropDownListLink>lstSkill</DropDownListLink>
           <VariableType>2 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+c74</Address>
+          <Address>_ptrGen0+8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>126</ID>
+          <ID>136</ID>
+          <Description>"Wild Card #"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ptrGen1+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>137</ID>
+          <Description>"Blank Card #"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>_ptrGen1+4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>138</ID>
           <Description>"Enemies Defeated"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f28</Address>
+          <Address>_ptrGen2+0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>127</ID>
+          <ID>139</ID>
           <Description>"Step Counter"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f2c</Address>
+          <Address>_ptrGen2+4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>128</ID>
+          <ID>140</ID>
           <Description>"Total Money Earned"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*61b]+f30</Address>
+          <Address>_ptrGen2+8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>129</ID>
+          <ID>141</ID>
           <Description>"Play Time [30*60*(60*h+m)]"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*622]+de8</Address>
+          <Address>_ptrGen3+0</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>130</ID>
+          <ID>142</ID>
           <Description>"Money"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*622]+dec</Address>
+          <Address>_ptrGen3+4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>131</ID>
+          <ID>143</ID>
           <Description>"Party Gauge"</Description>
           <VariableType>4 Bytes</VariableType>
-          <Address>[[_base]+8*622]+df4</Address>
+          <Address>_ptrGen3+c</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>132</ID>
+          <ID>144</ID>
           <Description>"P3 Hero LName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+df8</Address>
+          <Address>_ptrGen3+10</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>133</ID>
+          <ID>145</ID>
           <Description>"P3 Hero FName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e00</Address>
+          <Address>_ptrGen3+18</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>134</ID>
+          <ID>146</ID>
           <Description>"P4 Hero LName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e08</Address>
+          <Address>_ptrGen3+20</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>135</ID>
+          <ID>147</ID>
           <Description>"P4 Hero FName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e10</Address>
+          <Address>_ptrGen3+28</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>136</ID>
+          <ID>148</ID>
           <Description>"P3P Hero LName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e18</Address>
+          <Address>_ptrGen3+30</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>137</ID>
+          <ID>149</ID>
           <Description>"P3P Hero FName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e20</Address>
+          <Address>_ptrGen3+38</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>138</ID>
+          <ID>150</ID>
           <Description>"P5 Hero LName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e28</Address>
+          <Address>_ptrGen3+40</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>139</ID>
+          <ID>151</ID>
           <Description>"P5 Hero FName"</Description>
           <VariableType>String</VariableType>
           <Length>8</Length>
           <Unicode>0</Unicode>
           <CodePage>0</CodePage>
           <ZeroTerminate>1</ZeroTerminate>
-          <Address>[[_base]+8*622]+e30</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>140</ID>
-          <Description>"StreetPass Books #"</Description>
-          <VariableType>Byte</VariableType>
-          <Address>[[_base]+8*64b]+1d4</Address>
-        </CheatEntry>
-        <CheatEntry>
-          <ID>141</ID>
-          <Description>"StreetPass Books - Locked #"</Description>
-          <VariableType>Byte</VariableType>
-          <Address>[[_base]+8*64b]+1d5</Address>
+          <Address>_ptrGen3+48</Address>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>142</ID>
+      <ID>152</ID>
       <Description>"Materials Sold"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1262,7 +1471,7 @@ local addr = getAddress("+_ptrSoldItems")
 local matStart, matEnd = 1792, 2560
 
 local mat = table.filter(tab.item, function(v, k, t)
-    return tonumber(v.id) &gt; matStart and tonumber(v.id) &lt; matEnd
+    return tonumber(v.id) &gt;= matStart and tonumber(v.id) &lt; matEnd
   end)
 
 for _, v in pairs(mat) do
@@ -1285,7 +1494,7 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>143</ID>
+      <ID>153</ID>
       <Description>"Compendium"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1325,7 +1534,7 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>144</ID>
+      <ID>154</ID>
       <Description>"Enepedia"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1357,7 +1566,7 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>145</ID>
+      <ID>155</ID>
       <Description>"Sub Persona Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1391,7 +1600,7 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>146</ID>
+      <ID>156</ID>
       <Description>"Character Stats"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1426,25 +1635,25 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>147</ID>
-      <Description>"Item Inventory"</Description>
+      <ID>157</ID>
+      <Description>"Inventory"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>148</ID>
+          <ID>158</ID>
           <Description>"Inventory Item #"</Description>
           <VariableType>4 Bytes</VariableType>
           <Address>_ptrInv+3c8</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>149</ID>
+          <ID>159</ID>
           <Description>"Inventory Free #"</Description>
           <VariableType>4 Bytes</VariableType>
           <Address>_ptrInv+3d4</Address>
         </CheatEntry>
         <CheatEntry>
-          <ID>150</ID>
+          <ID>160</ID>
           <Description>"Items"</Description>
           <Options moHideChildren="1" moManualExpandCollapse="1" />
           <VariableType>Auto Assembler Script</VariableType>
@@ -1456,7 +1665,7 @@ if syntaxcheck then return end
 local rec = memrec
 reset(rec)
 
-local isValid = 0x081ACDDC
+local isValid = readInteger("_ptrInv-8")
 local mr0 = mrDesc("dsInvItem")
 
 for i = rec.Count, 59 do
@@ -1504,7 +1713,7 @@ invTimer.Enabled = true
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>151</ID>
+      <ID>161</ID>
       <Description>"Item Store"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1542,11 +1751,29 @@ end
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>152</ID>
-      <Description>"StreetPass Books"</Description>
+      <ID>162</ID>
+      <Description>"StreetPass"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
-      <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>[ENABLE]
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>163</ID>
+          <Description>"StreetPass Books #"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_ptrSPBooksCount+0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>164</ID>
+          <Description>"StreetPass Books - Locked #"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>_ptrSPBooksCount+1</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>165</ID>
+          <Description>"StreetPass Books"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" />
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
 {$lua}
 
 if syntaxcheck then return end
@@ -1555,14 +1782,14 @@ local rec = memrec
 reset(rec)
 
 if rec.Count == 0 then
-  local r0 = popDS(mrDesc("dsSPStats"), "+[[_base]+8*625]+940")
+  local r0 = popDS(mrDesc("dsSPStats"), "_ptrSPBooksOwn")
   r0.appendToEntry(rec)
   r0.DontSave = true
 
   r0.Description = "Own Book"
 end
 
-local max = readInteger("+[[_base]+8*64b]+1d4") + 1
+local max = readInteger("_ptrSPBooksCount") + 1
 
 if rec.Count ~= max then
   local tmp, tmpSize = popDS(mrDesc("dsSPStats"), "+_ptrSPBooks")
@@ -1590,9 +1817,11 @@ end
 {$asm}
 
 </AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
     </CheatEntry>
     <CheatEntry>
-      <ID>153</ID>
+      <ID>166</ID>
       <Description>"Stats Table"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1626,7 +1855,7 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>154</ID>
+      <ID>167</ID>
       <Description>"Skill Table"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <VariableType>Auto Assembler Script</VariableType>
@@ -1660,7 +1889,7 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>155</ID>
+      <ID>168</ID>
       <Description>"Battle Stats - Party"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <Color>008000</Color>
@@ -1731,7 +1960,7 @@ tmp.destroy()
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
-      <ID>156</ID>
+      <ID>169</ID>
       <Description>"Battle Stats - Enemies"</Description>
       <Options moHideChildren="1" moManualExpandCollapse="1" />
       <Color>008000</Color>
@@ -2170,6 +2399,7 @@ dat = {
   'skill',
   'char',
   'enemy',
+  'ticket',
 }
 
 tsv, tab = {}, {}
