@@ -1580,7 +1580,7 @@ if not reset(rec) then return end
 
 local tmp, tmpSize = popDS(mrDesc("dsPersona"), "+_ptrSubPersona")
 
-for i = rec.Count, 15 do
+for i = rec.Count, 19 do
   local r0 = mrClone(tmp, string.format("+%s*%x", tmpSize, i))
   r0.appendToEntry(rec)
   r0.DontSave = true
