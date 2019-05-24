@@ -1,0 +1,502 @@
+id	name_jp	name	tag
+0	ＢＬＡＮＫ	BLANK	bln
+1	臆病のマーヤ	Cowardly Maya	
+2	我欲のバザルト	Selfish Basalt	
+3	霧雨姉妹の四女	Rainy Sister 4	
+4	失言のアブルリー	Slipping Hablerie	
+5	マジックハンド	Magic Hand	
+6	ダンシングハンド	Dancing Hand	
+7	キリングハンド	Killing Hand	
+8	ゴッドハンド	Almighty Hand	
+9	笑うテーブル	Laughing Table	
+10	泣くテーブル	Crying Table	
+11	怒るテーブル	Angry Table	
+12	眠るテーブル	Sleeping Table	
+13	マジカルマグス	Magical Magus	
+14	ワンダーマグス	Wondrous Magus	
+15	インテリマグス	Prime Magus	
+16	グランドマグス	Grand Magus	
+17	虚言のアブルリー	Lying Hablerie	
+18	妄言のアブルリー	Forgotten Hablerie	
+19	甘言のアブルリー	Flattering Hablerie	
+20	翻弄のアブルリー	Agitating Hablerie	
+21	残酷のマーヤ	Merciless Maya	
+22	自律のバザルト	Autonomic Basalt	
+23	霧雨兄弟の四男	Rainy Brother 4	
+24	失言のアブルリー	Slipping Hablerie	
+25	雨女の壷	Cloudgirl Pot	
+26	雨見の壷	Rainy Pot	
+27	慕い女の壷	Yearning Pot	
+28	囲ひ女の壷	Mistress Pot	
+29	偽りの聖典	Spurious Book	
+30	狂気の聖典	Maniacal Book	
+31	沈黙の聖典	Silent Book	
+32	怒りの聖典	Wrathful Book	
+33	静寂のマリア	Tranquil Idol	
+34	解放のマリア	Liberating Idol	
+35	原初のマリア	Primitive Idol	
+36	狂乱のマリア	Vehement Idol	
+37	導きのマリア	Leading Idol	
+38	冷静のペーシェ	Calm Pesce	
+39	探求のペーシェ	Pursuing Pesce	
+40	真理のペーシェ	Truth Pesce	
+41	天ーのペーシェ	Revelation Pesce	
+42	虚栄のマーヤ	Frivolous Maya	
+43	無為のバザルト	Idle Basalt	
+44	霧雨姉妹の三女	Rainy Sister 3	
+45	ｂｌａｎｋ	blank	
+46	ヴィーナスイーグル	Venus Eagle	
+47	ダークイーグル	Dark Eagle	
+48	ジュピターイーグル	Jupiter Eagle	
+49	エターナルイーグル	Eternal Eagle	
+50	生成の彫像	Creation Relic	
+51	維持の彫像	Constancy Relic	
+52	育成の彫像	Growth Relic	
+53	変容の彫像	Change Relic	
+54	イデアマザー	Elegant Mother	
+55	スカルプマザー	Regal Mother	
+56	ピスティルマザー	Pistil Mother	
+57	ディバインマザー	Divine Mother	
+58	秘密のバンビーノ	Secret Bambino	
+59	狂い咲きバンビーノ	Blooming Bambino	
+60	貪欲のバンビーノ	Avarice Bambino	
+61	自由のバンビーノ	Free Bambino	
+62	傲慢のマーヤ	Haughty Maya	
+63	肥大のバザルト	Large Basalt	
+64	霧雨兄弟の三男	Rainy Brother 3	
+65	ｂｌａｎｋ	blank	
+66	死甲蟲	Grave Beetle	
+67	金剛蟲	Adamant Beetle	
+68	剛毅蟲	Strength Beetle	
+69	帝王蟲	Emperor Beetle	
+70	熱甲蟲（ダミー）	熱甲蟲（ダミ?[）	
+71	征服の騎士	Avenger Knight	
+72	凱旋の騎士	Champion Knight	
+73	地獄の騎士	Hell Knight	
+74	不屈の騎士	Intrepid Knight	
+75	雨見の城	Rainy Castle	
+76	パワーキャッスル	Power Castle	
+77	雨つぶての城	Raindrop Castle	
+78	キングキャッスル	King Castle	
+79	ぽじてぶキング	Positive King	
+80	えごいすとキング	Egotistical King	
+81	ぐれぇとキング	Great King	
+82	ぶりりあんとキング	Brilliant King	
+83	怠惰のマーヤ	Indolent Maya	
+84	依存のバザルト	Dependent Basalt	
+85	霧雨姉妹の次女	Rainy Sister 2	
+86	ｂｌａｎｋ	blank	
+87	トランスツインズ	Trance Twins	
+88	キラーツインズ	Killer Twins	
+89	雨明かりの双子	Rainbow Twins	
+90	クレイジーツインズ	Crazy Twins	
+91	狂信の塔	Cultic Tower	
+92	教条の塔	Dogmatic Tower	
+93	教条の塔	Apostate Tower	
+94	破戒の塔	Fanatic Tower	
+95	怨恨の塔	Grudge Tower	
+96	青のシジル	Blue Sigil	
+97	赤のシジル	Red Sigil	
+98	緑のシジル	Green Sigil	
+99	紫のシジル	Purple Sigil	
+100	収賄のファズ	Bribed Fuzz	
+101	固執のファズ	Persistent Fuzz	
+102	偏執のファズ	Monomaniac Fuzz	
+103	無秩序のファズ	Chaos Fuzz	
+104	裏切りのマーヤ	Insidious Maya	
+105	苦悩のバザルト	Anguish Basalt	
+106	霧雨兄弟の次男	Rainy Brother 2	
+107	ｂｌａｎｋ	blank	
+108	独占のクビド	Possessive Cupid	
+109	盲愛のクビド	Blind Cupid	
+110	偏愛のクビド	Devoted Cupid	
+111	博愛のクビド	Gracious Cupid	
+112	ソウルダンサー	Soul Dancer	
+113	ライフダンサー	Ardent Dancer	
+114	ロイヤルダンサー	Royal Dancer	
+115	クラリスダンサー	Natural Dancer	
+116	ハレムダンサー	Harem Dancer	
+117	情欲の蛇	Lustful Snake	
+118	愛欲の蛇	Immoral Snake	
+119	肉欲の蛇	Carnal Snake	
+120	淫欲の蛇	Amorous Snake	
+121	禁欲の蛇	Stoic Snake	
+122	浮気のパピヨン	Whimsical Papillon	
+123	目移りのパピヨン	Finicky Papillon	
+124	移り気のパピヨン	Fickle Papillon	
+125	純情のパピヨン	Pure Papillon	
+126	挫折のマーヤ	Ill-Fated Maya	
+127	不遜のバザルト	Insolent Basalt	
+128	霧雨姉妹の長女	Rainy Sister 1	
+129	ｂｌａｎｋ	blank	
+130	雨脚の滑車	Rain Wheel	
+131	マッハフォート	Mach Wheel	
+132	雨脚の滑車	Brave Wheel	
+133	バトルフォート	Battle Wheel	
+134	ワイルドドライブ	Wild Drive	
+135	キラードライブ	Killer Drive	
+136	スロータードライブ	Slaughter Drive	
+137	バスタードライブ	Rampage Drive	
+138	魔弾の砲座	Arcane Turret	
+139	真紅の砲座	Scarlet Turret	
+140	邪悪の砲座	Wicked Turret	
+141	洗礼の砲座	Hallowed Turret	
+142	爆轟の砲座	Roaring Turret	
+143	暴走の砲座	Berserk Turret	
+144	狼狽のパンツァー	Dismayed Panzer	
+145	無謀のパンツァー	Rash Panzer	
+146	慢心のパンツァー	Conceited Panzer	
+147	雷鳥のパンツァー	Ptarmigan Panzer	
+148	本性のマーヤ	Visceral Maya	
+149	源泉のバザルト	Source Basalt	
+150	霧雨兄弟の長男	Rainy Brother 1	
+151	ｂｌａｎｋ	blank	
+152	白狼の武者	Rain Leg Musha	
+153	雨明かりの武者	Rain End Musha	
+154	雨つぶての武者	Raindrop Musha	
+155	雨東風の武者	Rain Wind Musha	
+156	闘魂のギガス	Daring Gigas	
+157	鋼鉄のギガス	Beastly Gigas	
+158	激震のギガス	Furious Gigas	
+159	神話のギガス	Mythical Gigas	
+160	不滅のギガス	Immortal Gigas	
+161	ニザームアニマル	Nizam Beast	
+162	スレイヴアニマル	Enslaved Beast	
+163	フォースアニマル	Mighty Beast	
+164	ネメアンアニマル	Nemean Beast	
+165	エルドラアニマル	El Dorado Beast	
+166	招きの女御	Inviting Nyogo	
+167	徒花の女御	Blossom Nyogo	
+168	惜愛の女御	Valuing Nyogo	
+169	寂滅の女御	Silent Nyogo	
+170	貪欲のマーヤ	Desirous Maya	
+171	帰順のバザルト	Submissive Basalt	
+172	霧雨姉妹の次女	Rainy Sister 2	
+173	ｂｌａｎｋ	blank	
+174	ブラックレイヴン	Black Raven	
+175	スマッシュレイヴン	Vicious Raven	
+176	ソニックレイヴン	Sonic Raven	
+177	アメンティレイヴン	Amenti Raven	
+178	ファントムメイジ	Phantom Mage	
+179	ファントムマスター	Phantom Master	
+180	ファントムロード	Phantom Lord	
+181	ファントムキング	Phantom King	
+182	ファントムナイト	Phantom Hero	
+183	デスサーチャー	Death Seeker	
+184	フェイトサーチャー	Fate Seeker	
+185	ノーブルサーチャー	Noble Seeker	
+186	アケロンサーチャー	Acheron Seeker	
+187	浅薄の翁	Shallow Okina	
+188	軽挙の翁	Reckless Okina	
+189	世直しの翁	Reformed Okina	
+190	月形の翁	Moon Okina	
+191	誤算のマーヤ	Imprudent Maya	
+192	偶発のバザルト	Accidental Basalt	
+193	霧雨兄弟の次男	Rainy Brother 2	
+194	ｂｌａｎｋ	blank	
+195	ブロンズダイス	Bronze Dice	
+196	アイアンダイス	Iron Dice	
+197	シルバーダイス	Silver Dice	
+198	プラチナダイス	Platinum Dice	
+199	精神のダイス	Mind Dice	
+200	呪いのダイス	Curse Dice	
+201	死のダイス	Death Dice	
+202	天罰のダイス	Reckoning Dice	
+203	時の砂時計	Flowing Sand	
+204	逆行の砂時計	Perpetual Sand	
+205	無限の砂時計	Infinite Sand	
+206	永遠の砂時計	Eternal Sand	
+207	ミス・ジェーン	Miss Gene	
+208	フェイルジェーン	Fail Gene	
+209	ハッピージェーン	Happy Gene	
+210	ネクスト・ジェーン	Next Gene	
+211	偏見のマーヤ	Bigoted Maya	
+212	断罪のバザルト	Convicted Basalt	
+213	霧雨姉妹の長女	Rainy Sister 1	
+214	ｂｌａｎｋ	blank	
+215	正義の剣	Justice Sword	
+216	審判の剣	Conviction Sword	
+217	判決の剣	Judgment Sword	
+218	断罪の剣	Doom Sword	
+219	炎と氷のバランサー	Heat Balance	
+220	雷と風のバランサー	Sky Balance	
+221	全能のバランサー	World Balance	
+222	光と闇のバランサー	Light Balance	
+223	均衡の巨人	Order Giant	
+224	平衡の巨人	Stasis Giant	
+225	調和の巨人	Harmony Giant	
+226	無の巨人	Void Giant	
+227	鋼鉄の巨兵	Steel Machine	
+228	圧倒の巨兵	Dominating Machine	
+229	厳粛の巨兵	Solemn Machine	
+230	無慈悲の巨兵	Heartless Machine	
+231	犠牲のマーヤ	Devious Maya	
+232	抑圧のバザルト	Oppressive Basalt	
+233	霧雨兄弟の長男	Rainy Brother 1	
+234	ｂｌａｎｋ	blank	
+235	ミノタウロス四号	Minotaur IV	
+236	ミノタウロス参号	Minotaur III	
+237	ミノタウロス弐号	Minotaur II	
+238	ミノタウロス壱号	Minotaur I	
+239	ネオミノタウロス	Neo Minotaur	
+240	力のヘカトンケイル	Jotun of Power	
+241	血のヘカトンケイル	Jotun of Blood	
+242	魔のヘカトンケイル	Jotun of Evil	
+243	哀のヘカトンケイル	Jotun of Grief	
+244	豪腕のキュクロプス	Mighty Cyclops	
+245	狂気のキュクロプス	Mad Cyclops	
+246	憤怒のキュクロプス	Fierce Cyclops	
+247	混沌のキュクロプス	Chaos Cyclops	
+248	光輝のキュクロプス	Brilliant Cyclops	
+249	反逆のキュクロプス	Rebellious Cyclops	
+250	お守りレキシー	Protective Lexy	
+251	ドライデキシー	Dry Dexy	
+252	真面目カロシー	Earnest Calocy	
+253	出世ジュンシー	Successful Junecy	
+254	テストレア	Test Rare	
+255	ｂｌａｎｋ	blank	
+256	陽介の影	Shadow Yosuke	
+257	カモシダーマン	Kamoshidaman	
+258	スーパーカモシダーマン	Super Kamoshidaman	
+259	ライトキャロット	Right Carrot	
+260	レフトキャロット	Left Carrot	
+261	カモシダーマン	Kamoshidaman	
+262	ヨウスケサウルス	Yosukesaurus	
+263	草食恐竜	Herbivorous Dino	
+264	草食恐竜	Herbivorous Dino	
+265	草食恐竜	Herbivorous Dino	
+266	マザーコンピュータ	Mother Computer	
+267	マザーコンピュータ	Mother Computer	
+268	指導者	Overseer	
+269	ドーの右腕	Doe's Right Arm	
+270	ドーの左腕	Doe's Left Arm	
+271	ドーの頭	Doe's Head	
+272	ドー	Doe	
+273	ドーの目	Doe's Eye	
+274	マーガレット	Margaret	
+275	エリザベス	Elizabeth	
+276	金甲蟲	Golden Beetle	
+277	えんげーじキング	Engage King	
+278	ソウルサーチャー	Soul Seeker	
+279	守護の巨兵	Guardian Machine	
+280	ジュスティーヌ	Justine	
+281	テオドア	Theodore	
+282	マーガレット	Margaret	
+283	エリザベス	Elizabeth	
+284	テオドア	Theodore	
+285	ジュスティーヌ	Justine	
+286	カロリーヌ	Caroline	
+287	カロリーヌ	Caroline	
+288	バスター・ガール	Buster Girl	
+289	チキン・キッド	Chicken Kid	
+290	クイーン・ジョー	Tyranniqueen	
+291	サイドプテラ	Seidoptera	
+292	チキン・キッド	Chicken Kid	
+293	ＫＮＳ−１０００	KNS-1000	
+294	ＳＣＭ−８８０１	SCM-8801	
+295	ＳＣＭ−９８２１	SCM-9821	
+296	くまさん	Mr. Bear	
+297	こびとさん	Dwarven Family	
+298	きこりさん	Mr. Lumberjack	
+299	フンババ	Phunbaba	
+300	ナムタル	Namtaru	
+301	きこりさん	Mr. Lumberjack	
+302	刈り取るもの	The Reaper	
+303	ＵＩＹ−＊＊＊＊	UIY-XXXX	
+304	カモシダーマン	Kamoshidaman	
+305	ヨウスケサウルス	Yosukesaurus	
+306	マザーコンピュータ	Mother Computer	
+307	マザーコンピュータ	Mother Computer	
+308	ドー	Doe	
+309	エンリル	Enlil	
+310	エンリル	Enlil	
+311	エンリル	Enlil	
+312	黄金のアブルリー	Golden Hablerie	
+313	黄金のレキシー	Golden Lexy	
+314	宝物の手	Wealth Hand	
+315	財宝の手	Treasure Hand	
+316	至高の手	Supreme Hand	
+317	全盛の手	Opulent Hand	
+318	栄華の手	Luxury Hand	
+319	栄光の手	Glorious Hand	
+320	熱甲蟲	Burning Beetle	
+321	ｂｌａｎｋ	blank	
+322	ごーじゃすキング	Gorgeous King	
+323	でんじゃらすキング	Baleful King	
+324	ホラーＬＬシャドウ	Horror L Shadow	
+325	フェイトサーチャー	Fate Seeker	
+326	憤激の巨兵	Indignant Machine	
+327	ｂｌａｎｋ	blank	
+328	均衡の大巨人	Order Gigant	
+329	ｂｌａｎｋ	blank	
+330	ｂｌａｎｋ	blank	
+331	ｂｌａｎｋ	blank	
+332	ｂｌａｎｋ	blank	
+333	ｂｌａｎｋ	blank	
+334	ｂｌａｎｋ	blank	
+335	ｂｌａｎｋ	blank	
+336	ガントレットハンド	Gauntlet Hand	
+337	剣のトランプ兵	Sword Soldier	
+338	槍のトランプ兵	Spear Soldier	
+339	杖のトランプ兵	Staff Soldier	
+340	ワンドのトランプ兵	Wand Soldier	
+341	がりがりガーシー	Emaciated Garcy	
+342	執行の剣	Execution Sword	
+343	呪い女の壷	Cursed Woman's Pot	
+344	回天の彫像	Stupendous Relic	
+345	ごーじゃすキング	Gorgeous King	
+346	スペクトルレイヴン	Spectral Raven	
+347	祈祷の女御	Praying Nyogo	
+348	俗信の翁	Superstitious Okina	
+349	無法のファズ	Lawless Fuzz	
+350	石楼のパンツァー	Stone Panzer	
+351	融和の巨人	Harmonious Giant	
+352	新雪の武者	Snowfall Musha	
+353	沈静の巨兵	Calm Machine	
+354	雪晴れの武者	Clear Sky Musha	
+355	憤激の巨兵	Indignant Machine	
+356	天空の巨人	Heaven's Giant	
+357	ｂｌａｎｋ	blank	
+358	ｂｌａｎｋ	blank	
+359	テストＳサイズ	Test S Size	
+360	テストＭサイズ	Test M Size	
+361	テストＬサイズ	Test L Size	
+362	ｂｌａｎｋ	blank	
+363	ｂｌａｎｋ	blank	
+364	ｂｌａｎｋ	blank	
+365	ｂｌａｎｋ	blank	
+366	ｂｌａｎｋ	blank	
+367	ｂｌａｎｋ	blank	
+368	黄金のフォート	Golden Wheel	
+369	黄金のバランサー	Golden Balance	
+370	黄金のテーブル	Golden Table	
+371	黄金の聖典	Golden Book	
+372	黄金のバンビーノ	Golden Bambino	
+373	黄金のダイス	Golden Dice	
+374	黄金の剣	Golden Sword	
+375	黄金の肉体	Golden Goliath	
+376	黄金の蛇	Golden Snake	
+377	黄金のアニマル	Golden Beast	
+378	黄金の侍	Golden Samurai	
+379	ｂｌａｎｋ	blank	
+380	ｂｌａｎｋ	blank	
+381	ｂｌａｎｋ	blank	
+382	飢餓の猛獣	Ravenous Beast	
+383	傲慢な権力者	Proud Authority	
+384	孤独な扇動者	Lonely Manipulator	
+385	画一な同調者	Generic Conformist	
+386	過剰な保護者	Smothering Parent	
+387	ｂｌａｎｋ	blank	
+388	臆病のマーヤ	Cowardly Maya	
+389	虚言のアブルリー	Lying Hablerie	
+390	笑うテーブル	Laughing Table	
+391	我欲のバザルト	Selfish Basalt	
+392	偽りの聖典	Spurious Book	
+393	収賄のファズ	Bribed Fuzz	
+394	炎と氷のバランサー	Heat Balance	
+395	生成の彫像	Creation Relic	
+396	臆病のマーヤ	Cowardly Maya	
+397	虚言のアブルリー	Lying Hablerie	
+398	偽りの聖典	Spurious Book	
+399	生成の彫像	Creation Relic	
+400	笑うテーブル	Laughing Table	
+401	我欲のバザルト	Selfish Basalt	
+402	収賄のファズ	Bribed Fuzz	
+403	炎と氷のバランサー	Heat Balance	
+404	虚言のアブルリー	Lying Hablerie	
+405	生成の彫像	Creation Relic	
+406	収賄のファズ	Bribed Fuzz	
+407	炎と氷のバランサー	Heat Balance	
+408	盲愛のクビド	Blind Cupid	
+409	スレイヴアニマル	Enslaved Beast	
+410	招きの女御	Inviting Nyogo	
+411	ジュピターイーグル	Jupiter Eagle	
+412	情欲の蛇	Lustful Snake	
+413	浮気のパピヨン	Whimsical Papillon	
+414	冷静のペーシェ	Calm Pesce	
+415	秘密のバンビーノ	Secret Bambino	
+416	霧雨兄弟の次男	Rainy Brother 2	
+417	ブラックレイヴン	Black Raven	
+418	ハッピージェーン	Happy Gene	
+419	ミノタウロス壱号	Minotaur I	
+420	スレイヴアニマル	Enslaved Beast	
+421	冷静のペーシェ	Calm Pesce	
+422	ブラックレイヴン	Black Raven	
+423	ミノタウロス壱号	Minotaur I	
+424	マッハフォート	Mach Wheel	
+425	バスタードライブ	Rampage Drive	
+426	ファントムメイジ	Phantom Mage	
+427	時の砂時計	Flowing Sand	
+428	雨見の壷	Rainy Pot	
+429	トランスツインズ	Trance Twins	
+430	浅薄の翁	Shallow Okina	
+431	静寂のマリア	Tranquil Idol	
+432	お守りレキシー	Protective Lexy	
+433	ワンダーマグス	Wondrous Magus	
+434	イデアマザー	Elegant Mother	
+435	不屈の騎士	Intrepid Knight	
+436	ソウルダンサー	Soul Dancer	
+437	雨見の壷	Rainy Pot	
+438	お守りレキシー	Protective Lexy	
+439	不屈の騎士	Intrepid Knight	
+440	ｂｌａｎｋ	blank	
+441	ｂｌａｎｋ	blank	
+442	ｂｌａｎｋ	blank	
+443	ｂｌａｎｋ	blank	
+444	ｂｌａｎｋ	blank	
+445	ｂｌａｎｋ	blank	
+446	ｂｌａｎｋ	blank	
+447	ｂｌａｎｋ	blank	
+448	ｂｌａｎｋ	blank	
+449	ｂｌａｎｋ	blank	
+450	祝福禁じのレキシー	Blessbane Lexy	
+451	電撃禁じのレキシー	Elecbane Lexy	
+452	疾風禁じのレキシー	Windbane Lexy	
+453	氷結禁じのレキシー	Icebane Lexy	
+454	核熱禁じのアブルリー	Nukebane Lexy	
+455	念動禁じのアブルリー	Psybane Lexy	
+456	氷電禁じのフォート	Icevolt Bane Wheel	
+457	風炎禁じのフォート	Windfire Bane Wheel	
+458	物理禁じのアブルリー	Strikebane Hablerie	
+459	火炎禁じのバランサー	Firebane Balance	
+460	氷結禁じのバランサー	Icebane Balance	
+461	電撃禁じのバランサー	Elecbane Balance	
+462	疾風禁じのバランサー	Windbane Balance	
+463	念動禁じのバランサー	Psybane Balance	
+464	核熱禁じのバランサー	Nukebane Balance	
+465	祝福禁じの聖典	Blessbane Book	
+466	呪怨禁じの聖典	Cursebane Book	
+467	物理禁じのテーブル	Strikebane Table	
+468	氷炎禁じの剣	Icefire Bane Sword	
+469	風電禁じのダイス	Windvolt Bane Dice	
+470	念核禁じのバンビーノ	Nukebane Bambino	
+471	表四属性禁じの蛇	Aetherbane Snake	
+472	裏四属性禁じのアニマル	Egobane Beast	
+473	七属性禁じの人形	Omnibane Doll	
+474	禁じ隠しの武者	Bane Samurai	
+475	禁じ隠しの鎧武者	Bane Sentinel	
+476	禁じ隠しの荒武者	Bane Reaver	
+477	禁じ隠しの若武者	Bane Warrior	
+478	ｂｌａｎｋ	blank	
+479	ｂｌａｎｋ	blank	
+480	ｂｌａｎｋ	blank	
+481	ｂｌａｎｋ	blank	
+482	ｂｌａｎｋ	blank	
+483	ｂｌａｎｋ	blank	
+484	ｂｌａｎｋ	blank	
+485	ｂｌａｎｋ	blank	
+486	ｂｌａｎｋ	blank	
+487	ｂｌａｎｋ	blank	
+488	ｂｌａｎｋ	blank	
+489	ｂｌａｎｋ	blank	
+490	ｂｌａｎｋ	blank	
+491	ｂｌａｎｋ	blank	
+492	ｂｌａｎｋ	blank	
+493	ｂｌａｎｋ	blank	
+494	ｂｌａｎｋ	blank	
+495	ｂｌａｎｋ	blank	
+496	ｂｌａｎｋ	blank	
+497	ｂｌａｎｋ	blank	
+498	ｂｌａｎｋ	blank	
+499	ｂｌａｎｋ	blank	
+500	ｂｌａｎｋ	blank	
